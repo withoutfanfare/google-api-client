@@ -20,10 +20,15 @@ if(isset($_SESSION['access_token']) && !empty($_SESSION['access_token'])) {
 
 if (isset($_GET['code'])) {
 	$token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
-	$_SESSION['access_token'] = $token['access_token'];
 
 	$oauth2 = new Google_Service_Oauth2($client);
 	$user = $oauth2->userinfo->get();
+
+	$_SESSION['access_token'] = $token['access_token'];
+	$_SESSION['email'] = $user['email'];
+	$_SESSION['picture'] = $user['picture'];
+	$_SESSION['name'] = $user['name'];
+	$_SESSION['id'] = $user['id'];
 
 	header('Location: ' . filter_var($private_url, FILTER_SANITIZE_URL));
 	exit;
