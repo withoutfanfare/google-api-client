@@ -6,6 +6,7 @@ $home_url = '/';
 $private_url = '/restricted';
 
 session_start();
+
 $client = new Google_Client();
 $client->setAuthConfig('../client_secret.json');
 

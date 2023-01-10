@@ -7,7 +7,8 @@
 	$client->setAuthConfig('client_secret.json');
 
 	// set the scopes
-	$client->addScope(Google_Service_Oauth2::USERINFO_EMAIL);
+	// $client->addScope(Google_Service_Oauth2::USERINFO_EMAIL);
+	$client->addScope(Google_Service_Oauth2::USERINFO_PROFILE);
 
 	// set the redirect url
 	$client->setRedirectUri('http://localhost:8000/google/callback');
